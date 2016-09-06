@@ -12,7 +12,6 @@ Function path_library, marker, HOSTNAME=hostname, SOFT=soft
   if ~keyword_set(hostname) then $
     spawn, 'hostname', hostname
   hostname = strlowcase(hostname)
-  if hostname eq 'antares' then hostname = 'arcturus'
   
   ;Find the path corresponding to the marker
   case strlowcase(marker) of
@@ -48,6 +47,20 @@ Function path_library, marker, HOSTNAME=hostname, SOFT=soft
       begin
       case hostname of
         strlowcase('antares') : p = [gpath('redflamingos_basedir')+'sample_data/reduced/']
+        else : goto, badhost
+      endcase
+    end
+    'redflamingos_screenshots': $
+      begin
+      case hostname of
+        strlowcase('antares') : p = [gpath('redflamingos_basedir')+'screenshots/']
+        else : goto, badhost
+      endcase
+    end
+    'redflamingos_darks': $
+      begin
+      case hostname of
+        strlowcase('antares') : p = [gpath('redflamingos_raw_data')+'DARKS/']
         else : goto, badhost
       endcase
     end

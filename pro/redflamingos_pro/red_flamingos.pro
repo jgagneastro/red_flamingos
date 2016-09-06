@@ -13,7 +13,7 @@ Pro red_flamingos, RESET=reset, FORCE=force
   ;Should the trace be straightened ? (yes it should)
   straighten_trace = 1
   
-  do_screenshots = 0
+  do_screenshots = 1
   screenshots_dir = '/Users/gagne/flamingos_extraction_screenshots/'
   if do_screenshots eq 1 then folder_check, screenshots_dir
   
@@ -29,10 +29,10 @@ Pro red_flamingos, RESET=reset, FORCE=force
   logfile = logfile_dir+'Sample_FLAMINGOSII_Observing_Log.csv'
   
   ;Data directory
-  datadir_base = raw_data_dir+'GEMINI_SOUTH/FLAMINGOS2/'
+  datadir_base = raw_data_dir
   
   ;Output directory
-  outdir = output_base_dir+'GEMINI_SOUTH/FLAMINGOS2/ALL_REDUCTIONS/'
+  outdir = output_base_dir
   
   ;Darks directory
   darks_dir = raw_data_dir+'GEMINI_SOUTH/FLAMINGOS2/DARKS/'
