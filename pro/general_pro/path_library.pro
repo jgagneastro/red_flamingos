@@ -16,6 +16,13 @@ Function path_library, marker, HOSTNAME=hostname, SOFT=soft
   
   ;Find the path corresponding to the marker
   case strlowcase(marker) of
+    'redflamingos_basedir' : $
+      begin
+      case hostname of
+        strlowcase('antares') : p = ['/Users/gagne/Documents/IDL/IDL_library/Public/red_flamingos/']
+        else : goto, badhost
+      endcase
+    end
     'idl_sav' : $
       begin
       case hostname of
