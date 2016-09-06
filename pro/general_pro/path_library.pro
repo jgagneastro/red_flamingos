@@ -22,10 +22,10 @@ Function path_library, marker, HOSTNAME=hostname, SOFT=soft
         else : goto, badhost
       endcase
     end
-    'redflamingos_sav' : $
+    'redflamingos_idl_resources' : $
       begin
       case hostname of
-        strlowcase('antares') : p = [gpath('redflamingos_basedir')+'idl_sav/']
+        strlowcase('antares') : p = [gpath('redflamingos_basedir')+'idl_resources/']
         else : goto, badhost
       endcase
     end

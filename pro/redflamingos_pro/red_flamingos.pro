@@ -14,34 +14,27 @@ Pro red_flamingos, RESET=reset, FORCE=force
   straighten_trace = 1
   
   do_screenshots = 1
-  screenshots_dir = '/Users/gagne/flamingos_extraction_screenshots/'
+  screenshots_dir = gpath('redflamingos_screenshots')
   if do_screenshots eq 1 then folder_check, screenshots_dir
   
-  ;Were the reduction windows already opened ?
-  windows_already_open = 1
+  ;Are the reduction windows already open ?
+  windows_already_open = 0
   
-  ;Base directory
+  ;Get path variables
   logfile_dir =  gpath('redflamingos_logdir')
-  raw_data_dir = gpath('redflamingos_raw_data')
-  output_base_dir = gpath('redflamingos_reduced_data')
+  datadir_base = gpath('redflamingos_raw_data')
+  outdir = gpath('redflamingos_reduced_data')
+  resources_dir = gpath('redflamingos_idl_resources')
+  darks_dir = gpath('redflamingos_darks')
   
   ;Observing log file
   logfile = logfile_dir+'Sample_FLAMINGOSII_Observing_Log.csv'
   
-  ;Data directory
-  datadir_base = raw_data_dir
-  
-  ;Output directory
-  outdir = output_base_dir
-  
-  ;Darks directory
-  darks_dir = raw_data_dir+'GEMINI_SOUTH/FLAMINGOS2/DARKS/'
-  
   ;File containing the OSIRIS wavelength-calibrated lamp spectra
-  ar_cal_file = output_base_dir+'GEMINI_SOUTH/FLAMINGOS2/cuar_'+['JH','HK']+'_FLAMINGOS2.sav'
+  ar_cal_file = resources_dir+'cuar_'+['JH','HK']+'_FLAMINGOS2.sav'
   
   ;Comparison file for a typical extraction (for display purposes only)
-  comparison_file = output_base_dir+'GEMINI_SOUTH/FLAMINGOS2/comparison_'+['JH','HK']+'_FLAMINGOS2.sav'
+  comparison_file = resources_dir+'comparison_'+['JH','HK']+'_FLAMINGOS2.sav'
   
   ;Display the trace detection
   display_diagnostics = 1
@@ -1414,7 +1407,7 @@ Pro red_flamingos, RESET=reset, FORCE=force
             ngood = 0L
             if strpos(strlowcase(name[gtell[0L]]),'hip') ne -1 then begin
               if ~keyword_set(hipparcos) then begin
-                restore, gpath('redflamingos_sav')+'hipparcos.sav', /ver
+                restore, resources_dir+'hipparcos.sav', /ver
                 hipparcos = a
               endif
               good = where('hip '+strtrim(hipparcos.HIP,2) eq strlowcase(name[gtell[0]]), ngood)
