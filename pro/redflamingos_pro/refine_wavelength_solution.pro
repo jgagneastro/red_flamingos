@@ -11,10 +11,7 @@ Function refine_wavelength_solution, lambda, spectrum, USE_LINES=use_lines, WID=
     wid = 25L
   
   ;File containing cataloged H lines
-  ;file_H = '/Users/gagne/Dropbox/IDL/IDL_Library/05-BASS/E_Spectral_Reduction/SpeXTool_dup/data/HI.dat'
-  file_H = gpath('HI_FILE')
-  if file_H eq '' then $
-    file_H = '/Users/gagne/Documents/IDL/IDL_Library/General_Astronomy/05-BASS/E_Spectral_Reduction/SpeXTool/data/HI.dat'
+  file_H = gpath('redflamingos_idl_resources')+'HI.dat'
   
   ;Choose which H lines to use
   if ~keyword_set(use_lines) then $
