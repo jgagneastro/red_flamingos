@@ -21,7 +21,7 @@ Pro red_flamingos, RESET=reset, FORCE=force
   windows_already_open = 1
   
   ;Base directory
-  logfile_dir =  gpath('redflamingos_log')
+  logfile_dir =  gpath('redflamingos_logdir')
   raw_data_dir = gpath('redflamingos_raw_data')
   output_base_dir = gpath('redflamingos_reduced_data')
   

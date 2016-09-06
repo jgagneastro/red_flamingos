@@ -1,0 +1,9 @@
+#These following commands can be added to your bash_profile so that the IDL routine gpath.pro can correctly read paths for the red_flamingos IDL pipeline.
+#If setting up the paths this way fails, you can use path_library.pro instead, refer to the red_flamingos README.pdf available at https://github.com/jgagneastro/red_flamingos
+
+export PIDL_REDFLAMINGOS_BASEDIR="/Users/gagne/Documents/IDL/IDL_library/Public/red_flamingos/"
+export PIDL_REDFLAMINGOS_SAV="${PIDL_REDFLAMINGOS_BASEDIR}idl_sav/"
+export PIDL_REDFLAMINGOS_LOGDIR="${PIDL_REDFLAMINGOS_BASEDIR}flamingos_logfiles/"
+export PIDL_REDFLAMINGOS_RAW_DATA="${PIDL_REDFLAMINGOS_BASEDIR}sample_data/raw/"
+export PIDL_REDFLAMINGOS_REDUCED_DATA="${PIDL_REDFLAMINGOS_BASEDIR}sample_data/reduced/"
+
