@@ -1,8 +1,3 @@
-;TO DO: 
-;(- Test the /BINARY case (later))
-;(- Clean up comments in routine and all subroutines)
-;(- Implement the case with only an A-exposure.)
-
 Pro red_flamingos, RESET=reset, FORCE=force
   
   forward_function gpath, string_replace, folder_check, nbrlist, read_flamingos2, sortself, flamingos2_numtofile, lamp_spectralshape, $
@@ -14,10 +9,11 @@ Pro red_flamingos, RESET=reset, FORCE=force
   
   prereduc = 0
   force = 0
+  
   ;Should the trace be straightened ? (yes it should)
   straighten_trace = 1
   
-  do_screenshots = 1
+  do_screenshots = 0
   screenshots_dir = '/Users/gagne/flamingos_extraction_screenshots/'
   if do_screenshots eq 1 then folder_check, screenshots_dir
   

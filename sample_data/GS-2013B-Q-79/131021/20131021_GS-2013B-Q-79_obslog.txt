@@ -1,0 +1,234 @@
+Gemini-South: Electronic Observing Log for: GS-PLAN20131021
+--------------------------------------------------------------------------------------------------------------------------------------------
+Day Observers      : 
+Night Observers    : S. Margheim
+Night SSA          : E.Wenderoth, A.Cardwell
+Dataproc Observer  : D. Krogsrud
+Observer Comment   : 
+File Prefix        : S20131021S
+CC Software Version: 
+DC Software Version: 
+Software Comment   : 
+Weather Summary
+-----------------------------------------------------------------------------------------------------------------------------------------------
+UTC Time           Temperature(C)  Wind Speed(m/s)  Wind Direction(deg)  Barometric Pressure(mb)  Relative Humidity(%)  Water Vapor(mm)  Dimm  
+-----------------------------------------------------------------------------------------------------------------------------------------------
+10/20/13 17:00:01  3.72            9.20             319.53               729.08                   23.87                                  0.70  
+10/20/13 19:00:02  4.46            7.41             317.03               729.68                   24.08                                  0.70  
+10/20/13 21:00:01  4.79            9.90             319.63               729.24                   21.67                                  0.70  
+10/20/13 23:00:02  4.26            6.29             318.69               729.21                   22.51                                  0.70  
+10/21/13 01:00:01  4.62            7.70             333.74               728.77                   23.74                                  1.30  
+10/21/13 03:00:01  4.69            8.52             335.66               728.83                   19.01                                  0.93  
+10/21/13 05:00:01  5.03            10.47            329.18               728.38                   24.57                                  1.24  
+10/21/13 07:00:01  5.12            9.24             327.24               727.74                   24.90                                  1.33  
+10/21/13 09:00:01  5.46            7.84             336.87               727.65                   23.20                                  1.26  
+10/21/13 11:00:01  6.52            11.46            334.97               728.02                   17.28                                  1.13  
+10/21/13 13:00:02  6.92            11.86            337.62               729.64                   12.86                                  1.13  
+Flamingos 2 Observing Log
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Observation ID      Dataset UT  Data Labels  File Numbers  Target Name         Filter              Disperser             Lyot         Mask (FPU)          Read Mode      Exposure Time  
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+GS-2013B-Q-79-1567  02:26:30    1            1             HIP 115488 (A2/A3)  J (1.25 um)         None                  f/16 (open)  Imaging (none)      Bright Object  2.0            
+GS-2013B-Q-79-1567  OFFSETS (arcsec):  P = -1.555    Q = 2.139   
+GS-2013B-Q-79-1567  IQ~0.9 at airmass 1.17, CC50
+GS-2013B-Q-79-1567  02:28:23    2            2             HIP 115488 (A2/A3)  J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1567  slit image
+GS-2013B-Q-79-1567  02:29:36    3            3             HIP 115488 (A2/A3)  J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  2.0            
+GS-2013B-Q-79-1567  final position
+GS-2013B-Q-79-1568  02:33:13    1-4          4-7           HIP 115488 (A2/A3)  JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  5.0            
+GS-2013B-Q-79-1568  Clear CC50, IQAny.  Stable conditions.
+GS-2013B-Q-79-1568  02:36:02    5-8          8-11          HIP 115488 (A2/A3)  HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1565  02:42:09    1-2          12-13         OFFSET_J2322-6151B  J (1.25 um)         None                  f/16 (open)  Imaging (none)      Bright Object  10.0           
+GS-2013B-Q-79-1565  IQ~0.95 at airmass 1.18, CC50.   OFFSETS (arcsec):  P = -2.379    Q = 0.000   
+GS-2013B-Q-79-1565-002    sky
+GS-2013B-Q-79-1565  02:44:43    3-5          14-16         OFFSET_J2322-6151B  J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1565  slit image
+GS-2013B-Q-79-1565-004    sky 
+GS-2013B-Q-79-1565-005    final position.
+GS-2013B-Q-79-1566  02:55:41    1-4          17-20         OFFSET_J2322-6151B  JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Faint Object   210.0          
+GS-2013B-Q-79-1566  IQAny, CC50 and stable.  IQ very slowly improving.
+GS-2013B-Q-79-1566-002    sky lines saturating but spectrum looks good.
+GS-2013B-Q-79-1566-003    IQ~1&quot;, IQAny, CC50
+GS-2013B-Q-79-1566-004    OK
+GS-2013B-Q-79-1566  03:12:19    5            21            Ar                  JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  15.0           
+GS-2013B-Q-79-1566  Arc OK
+GS-2013B-Q-79-1566  03:12:56    6            22            GCALflat            JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  4.0            
+GS-2013B-Q-79-1566  Flat OK
+GS-2013B-Q-79-1566  03:14:26    7-10         23-26         OFFSET_J2322-6151B  HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Faint Object   210.0          
+GS-2013B-Q-79-1566  Conditions remain stable, IQAny, CC50.
+GS-2013B-Q-79-1566-008    IQ~1.2 at airmass 1.21
+GS-2013B-Q-79-1566-009    OK
+GS-2013B-Q-79-1566-010    OK
+GS-2013B-Q-79-1566  03:30:45    11           27            Ar                  HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  40.0           
+GS-2013B-Q-79-1566  Arc OK
+GS-2013B-Q-79-1566  03:31:55    12           28            GCALflat            HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  80.0           
+GS-2013B-Q-79-1566  Flat OK
+GS-2013B-Q-79-1555  04:02:47    1            29            HIP 113900 (A5)     J (1.25 um)         None                  f/16 (open)  Imaging (none)      Bright Object  2.0            
+GS-2013B-Q-79-1555  IQ85 ~0.72, CC50.  IQ variable. OFFSETS (arcsec):  P = -1.779    Q = 1.289   
+GS-2013B-Q-79-1555  04:04:40    2            30            HIP 113900 (A5)     J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1555  slit image
+GS-2013B-Q-79-1555  04:05:56    3            31            HIP 113900 (A5)     J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  2.0            
+GS-2013B-Q-79-1555  final position
+GS-2013B-Q-79-1556  04:09:46    1-4          32-35         HIP 113900 (A5)     JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  5.0            
+GS-2013B-Q-79-1556  OK.  IQ variable ~1arcsec CC50
+GS-2013B-Q-79-1556-002    OK
+GS-2013B-Q-79-1556  04:12:35    5-8          36-39         HIP 113900 (A5)     HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1556-006    Variable IQ, IQAny. OK
+GS-2013B-Q-79-1553  04:18:47    1            40            J2314-5405          J (1.25 um)         None                  f/16 (open)  Imaging (none)      Bright Object  5.0            
+GS-2013B-Q-79-1553  OFFSETS (arcsec):  P = 1.280     Q = 1.377   
+GS-2013B-Q-79-1553  IQ~1.1arcsec at airmass 1.22 IQAny, CC50
+GS-2013B-Q-79-1553  04:20:44    2            41            J2314-5405          J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1553  slit image
+GS-2013B-Q-79-1553  04:22:13    3            42            J2314-5405          J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  5.0            
+GS-2013B-Q-79-1553  final position.
+GS-2013B-Q-79-1554  04:26:58    1-4          43-46         J2314-5405          JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  30.0           
+GS-2013B-Q-79-1554  IQ~1.1, CC50.
+GS-2013B-Q-79-1554-002    OK
+GS-2013B-Q-79-1554-003    OK
+GS-2013B-Q-79-1554-004    OK
+GS-2013B-Q-79-1554  04:31:45    5            47            Ar                  JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  15.0           
+GS-2013B-Q-79-1554  Arc OK
+GS-2013B-Q-79-1554  04:32:24    6            48            GCALflat            JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  4.0            
+GS-2013B-Q-79-1554  Flat OK
+GS-2013B-Q-79-1554  04:33:51    7-10         49-52         J2314-5405          HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  30.0           
+GS-2013B-Q-79-1554  IQ getting wose, ~1.5, CC50
+GS-2013B-Q-79-1554-008    IQ~1.4, CC50
+GS-2013B-Q-79-1554-009    OK
+GS-2013B-Q-79-1554-010    IQ~1.2,CC50
+GS-2013B-Q-79-1554  04:38:24    11           53            Ar                  HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  40.0           
+GS-2013B-Q-79-1554  Arc OK
+GS-2013B-Q-79-1554  04:39:34    12           54            GCALflat            HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  80.0           
+GS-2013B-Q-79-1554  Flat OK
+GS-2013B-Q-79-1547  04:45:38    1            55            J2313-6127          J (1.25 um)         None                  f/16 (open)  Imaging (none)      Bright Object  5.0            
+GS-2013B-Q-79-1547  IQ~1.1 IQAny, CC50 OFFSETS (arcsec):  P = -0.123    Q = -0.975  
+GS-2013B-Q-79-1547  04:47:34    2            56            J2313-6127          J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1547  slit image
+GS-2013B-Q-79-1547  04:48:54    3            57            J2313-6127          J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  5.0            
+GS-2013B-Q-79-1547  final position.
+GS-2013B-Q-79-1548  04:54:30    1-4          58-61         J2313-6127          JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  30.0           
+GS-2013B-Q-79-1548  OK
+GS-2013B-Q-79-1548-002    OK, IQ Any CC50
+GS-2013B-Q-79-1548-003    OK
+GS-2013B-Q-79-1548-004    OK
+GS-2013B-Q-79-1548  04:58:48    5            62            Ar                  JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  15.0           
+GS-2013B-Q-79-1548  Arc OK
+GS-2013B-Q-79-1548  04:59:26    6            63            GCALflat            JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  4.0            
+GS-2013B-Q-79-1548  Flat OK
+GS-2013B-Q-79-1548  05:00:55    7-10         64-67         J2313-6127          HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  30.0           
+GS-2013B-Q-79-1548  OK
+GS-2013B-Q-79-1548-008    OK, IQ~1.4 at airtmass 1.38. CC50
+GS-2013B-Q-79-1548-009    OK
+GS-2013B-Q-79-1548-010    OK
+GS-2013B-Q-79-1548  05:04:51    11           68            Ar                  HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  40.0           
+GS-2013B-Q-79-1548  Arc OK
+GS-2013B-Q-79-1548  05:06:01    12           69            GCALflat            HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  80.0           
+GS-2013B-Q-79-1548  Flat OK
+GS-2013B-Q-79-1549  05:11:19    1            70            HIP 115488 (A2/A3)  J (1.25 um)         None                  f/16 (open)  Imaging (none)      Bright Object  2.0            
+GS-2013B-Q-79-1549  IQ~1.7 at airmass 1.37 =IQAny, CC50. OFFSETS (arcsec):  P = -1.597    Q = 1.776   
+GS-2013B-Q-79-1549  05:13:13    2            71            HIP 115488 (A2/A3)  J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1549  slit image
+GS-2013B-Q-79-1549  05:14:51    3            72            HIP 115488 (A2/A3)  J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  2.0            
+GS-2013B-Q-79-1549  final position.
+GS-2013B-Q-79-1550  05:18:29    1-4          73-76         HIP 115488 (A2/A3)  JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  5.0            
+GS-2013B-Q-79-1550  OK IQAny, CC50
+GS-2013B-Q-79-1550  05:21:22    5-8          77-80         HIP 115488 (A2/A3)  HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1550  OK, IQAny, CC50
+GS-2013B-Q-79-1550-007    IQAny and viarble 
+GS-2013B-Q-79-1634  05:27:26    1-2          81-82         J0540-0906          J (1.25 um)         None                  f/16 (open)  Imaging (none)      Bright Object  10.0           
+GS-2013B-Q-79-1634  IQ~1.26 at airmass 1.44, IQAny CC50. OFFSETS (arcsec):  P = 0.178     Q = -8.897  
+GS-2013B-Q-79-1634-002    sky
+GS-2013B-Q-79-1634  05:30:02    3            83            J0540-0906          J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1634  slit image
+GS-2013B-Q-79-1634  05:32:08    4-5          84-85         J0540-0906          J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  30.0           
+GS-2013B-Q-79-1634  sky
+GS-2013B-Q-79-1634-005    final position.
+GS-2013B-Q-79-1356  05:37:42    16-27        86-97         J0540-0906          HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Faint Object   130.0          
+GS-2013B-Q-79-1356  OK. Lots of excess counts in bottom left of detector, but away from spectrum. Scattered light from P2WFS?
+GS-2013B-Q-79-1356-017    OK, IQAny and variable, CC50.  
+GS-2013B-Q-79-1356-019    IQ~1arcsec, CC50. OK
+GS-2013B-Q-79-1356-021    IQ~1.1arcsec CC50, IQAny.
+GS-2013B-Q-79-1356-023    IQ~1.1arcsec, CC50
+GS-2013B-Q-79-1356-025    OK
+GS-2013B-Q-79-1356-027    IQ~1.2arcsec CC50. OK
+GS-2013B-Q-79-1356  06:10:52    28           98            Ar                  HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  40.0           
+GS-2013B-Q-79-1356  Arc OK
+GS-2013B-Q-79-1356  06:12:01    29           99            GCALflat            HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  80.0           
+GS-2013B-Q-79-1356  Flat OK
+GS-2013B-Q-79-1635  06:16:54    1            100           HIP 27089 (A0)      J (1.25 um)         None                  f/16 (open)  Imaging (none)      Bright Object  2.0            
+GS-2013B-Q-79-1635  IQAny and variable, ~1arcsec. CC50 OFFSETS (arcsec):  P = -1.314    Q = 1.646   
+GS-2013B-Q-79-1635  06:18:47    2            101           HIP 27089 (A0)      J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1635  slit image
+GS-2013B-Q-79-1635  06:20:16    3            102           HIP 27089 (A0)      J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  2.0            
+GS-2013B-Q-79-1635  final position.
+GS-2013B-Q-79-1636  06:24:40    1-4          103-106       HIP 27089 (A0)      HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1636  OK CC50, IQAny.
+GS-2013B-Q-79-1349  06:29:46    1-2          107-108       J0537-0623          J (1.25 um)         None                  f/16 (open)  Imaging (none)      Bright Object  10.0           
+GS-2013B-Q-79-1349  IQ~1.2 IQAny, CC50. OFFSETS (arcsec):  P = -1.290    Q = -8.442  Target inferred from 2MASS image.  
+GS-2013B-Q-79-1349-002    sky
+GS-2013B-Q-79-1349  06:32:22    3-5          109-111       J0537-0623          J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1349  slit image
+GS-2013B-Q-79-1349-004    sky
+GS-2013B-Q-79-1349-005    final position
+GS-2013B-Q-79-1350  06:41:04    1-4          112-115       J0537-0623          JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Faint Object   210.0          
+GS-2013B-Q-79-1350  OK
+GS-2013B-Q-79-1350-002    IQ ~1.4 at airmass 1.2, CC50
+GS-2013B-Q-79-1350-004    IQ~1.4, CC50.  
+GS-2013B-Q-79-1350  06:57:40    5            116           Ar                  JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  15.0           
+GS-2013B-Q-79-1350  Arc OK
+GS-2013B-Q-79-1350  06:58:18    6            117           GCALflat            JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  4.0            
+GS-2013B-Q-79-1350  Flat OK
+GS-2013B-Q-79-1350  06:59:47    7-10         118-121       J0537-0623          HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Faint Object   210.0          
+GS-2013B-Q-79-1350  Lots of excess signal in lower-left portion of the dectector.  Spectrum appears to be unaffected. Significant vignetting from P2WFS is likely the cause. 
+GS-2013B-Q-79-1350-008    IQ ~1 at airmass 1.15. CC50
+GS-2013B-Q-79-1350-009    OK
+GS-2013B-Q-79-1350-010    OK
+GS-2013B-Q-79-1350  07:17:04    11           122           Ar                  HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  40.0           
+GS-2013B-Q-79-1350  Arc OK
+GS-2013B-Q-79-1350  07:18:13    12           123           GCALflat            HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  80.0           
+GS-2013B-Q-79-1350  Flat OK
+GS-2013B-Q-79-1347  07:22:36    1            124           HIP 24342 (A0)      J (1.25 um)         None                  f/16 (open)  Imaging (none)      Bright Object  2.0            
+GS-2013B-Q-79-1347  IQ~0.95 at airmass 1.14.  CC50. OFFSETS (arcsec):  P = -0.744    Q = 2.358   
+GS-2013B-Q-79-1347  07:24:30    2            125           HIP 24342 (A0)      J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1347  slit image
+GS-2013B-Q-79-1347  07:25:54    3            126           HIP 24342 (A0)      J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  2.0            
+GS-2013B-Q-79-1347  final position.
+GS-2013B-Q-79-1348  07:29:15    1-4          127-130       HIP 24342 (A0)      JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  5.0            
+GS-2013B-Q-79-1348  IQAny, CC50
+GS-2013B-Q-79-1348  07:32:06    5-8          131-134       HIP 24342 (A0)      HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1348  IQ~1.2, CC50. OK
+GS-2013B-Q-79-1397  07:37:57    1-2          135-136       J0720-5617          J (1.25 um)         None                  f/16 (open)  Imaging (none)      Bright Object  10.0           
+GS-2013B-Q-79-1397  sky 
+GS-2013B-Q-79-1397-002    OFFSETS (arcsec):  P = -0.097    Q = 3.201. IQ~1,CC50.
+GS-2013B-Q-79-1397  07:40:33    3-5          137-139       J0720-5617          J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1397  slit image 
+GS-2013B-Q-79-1397-004    sky 
+GS-2013B-Q-79-1397-005    final position.
+GS-2013B-Q-79-1398  07:46:17    1-4          140-143       J0720-5617          JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Faint Object   210.0          
+GS-2013B-Q-79-1398  IQAny, CC50.  Counts a bit high.  
+GS-2013B-Q-79-1398-003    IQAny, CC50.Counts down a bit.
+GS-2013B-Q-79-1398  08:03:24    5            144           Ar                  JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  15.0           
+GS-2013B-Q-79-1398  Arc OK
+GS-2013B-Q-79-1398  08:04:02    6            145           GCALflat            JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  4.0            
+GS-2013B-Q-79-1398  Flat OK
+GS-2013B-Q-79-1398  08:05:29    7-10         146-149       J0720-5617          HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Faint Object   210.0          
+GS-2013B-Q-79-1398  Counts a bit high.
+GS-2013B-Q-79-1398-008    OK. Counts better.
+GS-2013B-Q-79-1398-010    OK
+GS-2013B-Q-79-1398  08:24:26    11           150           Ar                  HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  40.0           
+GS-2013B-Q-79-1398  Arc OK
+GS-2013B-Q-79-1398  08:25:36    12           151           GCALflat            HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  80.0           
+GS-2013B-Q-79-1398  Flat OK
+GS-2013B-Q-79-1399  08:29:56    1            152           HIP 37396 (A0)      J (1.25 um)         None                  f/16 (open)  Imaging (none)      Bright Object  2.0            
+GS-2013B-Q-79-1399  IQ~1, CC50.  OFFSETS (arcsec):  P = -1.465    Q = 0.884   
+GS-2013B-Q-79-1399  08:31:49    2            153           HIP 37396 (A0)      J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1399  slit image
+GS-2013B-Q-79-1399  08:33:21    3            154           HIP 37396 (A0)      J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  2.0            
+GS-2013B-Q-79-1399  final position.
+GS-2013B-Q-79-1400  08:38:44    1-4          155-158       HIP 37396 (A0)      JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  5.0            
+GS-2013B-Q-79-1400  IQ Any ~1.5, CC50. OK secondary trace visible from another object in slit, but not near target spectrum.
+GS-2013B-Q-79-1400  08:41:37    5-8          159-162       HIP 37396 (A0)      HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1646  09:03:04    1-6          163-168       Manual Dark         Dark                None                  f/16 (open)  2-pix pinhole grid  Faint Object   130.0          
+GS-2013B-Q-79-1643  09:19:26    1-6          169-174       Manual Dark         Dark                None                  f/16 (open)  2-pix pinhole grid  Bright Object  5.0            
+GS-2013B-Q-79-1643  09:22:25    7-12         175-180       Manual Dark         Dark                None                  f/16 (open)  2-pix pinhole grid  Bright Object  10.0           
+GS-2013B-Q-79-1644  09:25:52    1-6          181-186       Manual Dark         Dark                None                  f/16 (open)  2-pix pinhole grid  Faint Object   210.0          
+GS-2013B-Q-79-1645  09:50:15    1-6          187-192       Manual Dark         Dark                None                  f/16 (open)  2-pix pinhole grid  Bright Object  30.0           

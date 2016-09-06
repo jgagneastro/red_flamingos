@@ -1,0 +1,65 @@
+Gemini-South: Electronic Observing Log for: GS-PLAN20130927
+--------------------------------------------------------------------------------------------------------------------------------------------
+Day Observers      : J. Fuentes
+Night Observers    : 
+Night SSA          : 
+Dataproc Observer  : 
+Observer Comment   : 
+File Prefix        : S20130927S
+CC Software Version: 
+DC Software Version: 
+Software Comment   : 
+Weather Summary
+-----------------------------------------------------------------------------------------------------------------------------------------------
+UTC Time           Temperature(C)  Wind Speed(m/s)  Wind Direction(deg)  Barometric Pressure(mb)  Relative Humidity(%)  Water Vapor(mm)  Dimm  
+-----------------------------------------------------------------------------------------------------------------------------------------------
+09/26/13 17:00:02  6.07            8.04             320.91               728.08                   14.36                                  0.94  
+09/26/13 19:00:01  6.29            8.88             318.77               728.06                   18.97                                  0.94  
+09/26/13 21:00:02  6.52            5.50             318.17               728.18                   24.86                                  0.94  
+09/26/13 23:00:01  6.23            6.65             322.51               727.26                   23.77                                  0.94  
+09/27/13 01:00:02  5.80            5.71             313.30               726.64                   26.61                                  0.97  
+09/27/13 03:00:01  5.60            6.98             314.42               726.07                   22.75                                  1.75  
+09/27/13 05:00:01  5.67            7.60             318.35               725.58                   9.74                                   1.35  
+09/27/13 07:00:02  5.45            8.15             327.84               724.69                   11.81                                  1.24  
+09/27/13 09:00:01  4.68            7.20             338.00               724.63                   21.58                                  1.16  
+09/27/13 11:00:01  3.88            6.88             334.48               725.51                   27.69                                  0.74  
+09/27/13 13:00:02  3.57            9.62             333.51               727.96                   22.56                                  0.74  
+Flamingos 2 Observing Log
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Observation ID      Dataset UT  Data Labels  File Numbers  Target Name         Filter              Disperser             Lyot         Mask (FPU)          Read Mode      Exposure Time  
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+GS-2013B-Q-79-1521  05:22:02    1            53            HIP 111127 (A0/A1)  J (1.25 um)         None                  f/16 (open)  Imaging (none)      Bright Object  2.0            
+GS-2013B-Q-79-1521  05:23:56    2            54            HIP 111127 (A0/A1)  J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1521  05:25:48    3            55            HIP 111127 (A0/A1)  J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  2.0            
+GS-2013B-Q-79-1522  05:27:33    1-4          56-59         HIP 111127 (A0/A1)  JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  5.0            
+GS-2013B-Q-79-1522  05:30:22    5-8          60-63         HIP 111127 (A0/A1)  HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1522-008    Last steps (HK spectra) saturated, cloning and dropping exposure time.
+GS-2013B-Q-79-1522  05:33:14    9-12         64-67         HIP 111127 (A0/A1)  HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  3.0            
+GS-2013B-Q-79-1523  05:37:58    1-2          68-69         J2235-3844          J (1.25 um)         None                  f/16 (open)  Imaging (none)      Bright Object  10.0           
+GS-2013B-Q-79-1523  05:40:35    3-7          70-74         J2235-3844          J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1524  05:48:59    1-8          75-82         J2235-3844          JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Faint Object   280.0          
+GS-2013B-Q-79-1524-004    Changing nod strategy as sky will not subtract optimally. It had a repeat at the observe level so two images were taken in each nod.y
+GS-2013B-Q-79-1524  06:30:45    9            83            Ar                  JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  15.0           
+GS-2013B-Q-79-1524  06:31:23    10           84            GCALflat            JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  4.0            
+GS-2013B-Q-79-1524  06:32:51    11-18        85-92         J2235-3844          HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Faint Object   280.0          
+GS-2013B-Q-79-1524  07:14:30    19           93            Ar                  HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  40.0           
+GS-2013B-Q-79-1524  07:15:39    20           94            GCALflat            HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  80.0           
+GS-2013B-Q-79-1115  07:23:16    1-2          95-96         J0120-5200          J (1.25 um)         None                  f/16 (open)  Imaging (none)      Bright Object  10.0           
+GS-2013B-Q-79-1115  07:25:53    3-4          97-98         J0120-5200          J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1116  07:30:47    1-12         99-110        J0120-5200          JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Faint Object   310.0          
+GS-2013B-Q-79-1116  Sequence was changed to a standard ABBA nodding.
+GS-2013B-Q-79-1116  08:39:13    13           111           Ar                  JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  15.0           
+GS-2013B-Q-79-1116  08:39:51    14           112           GCALflat            JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  4.0            
+GS-2013B-Q-79-1116  08:41:20    15-22        113-120       J0120-5200          HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Faint Object   310.0          
+GS-2013B-Q-79-1116  09:26:59    23           121           Ar                  HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  40.0           
+GS-2013B-Q-79-1116  09:28:09    24           122           GCALflat            HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  80.0           
+GS-2013B-Q-79-1117  09:33:39    1            123           HIP 6364 (A0)       J (1.25 um)         None                  f/16 (open)  Imaging (none)      Bright Object  2.0            
+GS-2013B-Q-79-1117  09:35:34    2            124           HIP 6364 (A0)       J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1117  09:37:05    3            125           HIP 6364 (A0)       J (1.25 um)         None                  f/16 (open)  4-pix longslit      Bright Object  2.0            
+GS-2013B-Q-79-1118  09:39:15    1-4          126-129       HIP 6364 (A0)       JH (spectroscopic)  R=1200 (J + H) grism  f/16 (open)  4-pix longslit      Bright Object  5.0            
+GS-2013B-Q-79-1118  09:42:07    5-8          130-133       HIP 6364 (A0)       HK (spectroscopic)  R=1200 (H + K) grism  f/16 (open)  4-pix longslit      Bright Object  10.0           
+GS-2013B-Q-79-1602  10:00:29    1-6          134-139       Manual Dark         Y (1.02 um)         None                  f/16 (open)  2-pix pinhole grid  Bright Object  3.0            
+GS-2013B-Q-79-1602  10:03:16    7-12         140-145       Manual Dark         Y (1.02 um)         None                  f/16 (open)  2-pix pinhole grid  Bright Object  5.0            
+GS-2013B-Q-79-1602  10:06:14    13-18        146-151       Manual Dark         Y (1.02 um)         None                  f/16 (open)  2-pix pinhole grid  Bright Object  10.0           
+GS-2013B-Q-79-1598  10:09:42    1-6          152-157       Manual Dark         Y (1.02 um)         None                  f/16 (open)  2-pix pinhole grid  Faint Object   280.0          
+GS-2013B-Q-79-1599  10:41:04    1-6          158-163       Manual Dark         Y (1.02 um)         None                  f/16 (open)  2-pix pinhole grid  Faint Object   300.0          
