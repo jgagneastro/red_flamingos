@@ -23,24 +23,31 @@ Function path_library, marker, HOSTNAME=hostname, SOFT=soft
         else : goto, badhost
       endcase
     end
-    'idl_sav' : $
+    'redflamingos_sav' : $
       begin
       case hostname of
-        strlowcase('antares') : p = ['/Users/gagne/Documents/IDL/IDL_sav/']
+        strlowcase('antares') : p = [gpath('redflamingos_basedir')+'idl_sav/']
         else : goto, badhost
       endcase
     end
-    'idl_csv': $
+    'redflamingos_log': $
       begin
       case hostname of
-        strlowcase('antares') : p = ['/Users/gagne/Documents/IDL/IDL_csv/']
+        strlowcase('antares') : p = [gpath('redflamingos_basedir')+'example_logfile/']
         else : goto, badhost
       endcase
     end
-    'reduced_data': $
+    'redflamingos_raw_data': $
       begin
       case hostname of
-        strlowcase('antares') : p = ['/Users/gagne/Dropbox/Data_Repository/REDUCED/']
+        strlowcase('antares') : p = [gpath('redflamingos_basedir')+'sample_data/raw/']
+        else : goto, badhost
+      endcase
+    end
+    'redflamingos_reduced_data': $
+      begin
+      case hostname of
+        strlowcase('antares') : p = [gpath('redflamingos_basedir')+'sample_data/reduced/']
         else : goto, badhost
       endcase
     end

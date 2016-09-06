@@ -21,12 +21,12 @@ Pro red_flamingos, RESET=reset, FORCE=force
   windows_already_open = 1
   
   ;Base directory
-  logfile_dir =  gpath('idl_csv')
-  raw_data_dir = gpath('raw_data')
-  output_base_dir = gpath('reduced_data')
+  logfile_dir =  gpath('redflamingos_log')
+  raw_data_dir = gpath('redflamingos_raw_data')
+  output_base_dir = gpath('redflamingos_reduced_data')
   
   ;Observing log file
-  logfile = logfile_dir+'FLAMINGOSII_Observing_Log.csv'
+  logfile = logfile_dir+'Sample_FLAMINGOSII_Observing_Log.csv'
   
   ;Data directory
   datadir_base = raw_data_dir+'GEMINI_SOUTH/FLAMINGOS2/'
@@ -1414,7 +1414,7 @@ Pro red_flamingos, RESET=reset, FORCE=force
             ngood = 0L
             if strpos(strlowcase(name[gtell[0L]]),'hip') ne -1 then begin
               if ~keyword_set(hipparcos) then begin
-                restore, gpath('idl_sav')+'hipparcos.sav', /ver
+                restore, gpath('redflamingos_sav')+'hipparcos.sav', /ver
                 hipparcos = a
               endif
               good = where('hip '+strtrim(hipparcos.HIP,2) eq strlowcase(name[gtell[0]]), ngood)
