@@ -1,0 +1,1 @@
+This is what your sample data reduced spectrum should look like in the end
