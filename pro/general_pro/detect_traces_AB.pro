@@ -8,7 +8,7 @@ Function detect_traces_AB, diff_in, SMOOTH=smooth, DISPLAY=display, BINARY=binar
   ; titre du plot.
   ;BINARY indique que chaque trace est binaire. Mettre = 1 pour
   
-  forward_function remove, mpfitfun, rvb_hex, robust_sigma, AB_moffat_fixed_sep, tvread, saveimage
+  forward_function remove, mpfitfun, rvb_hex, robust_sigma, AB_moffat_fixed_sep, tvread, saveimage, curcompdate
   
   ;On evite d'alterer la trace en entree
   diff = diff_in

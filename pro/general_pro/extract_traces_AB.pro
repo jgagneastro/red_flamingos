@@ -10,7 +10,8 @@ Function extract_traces_AB, diff, SMOOTH=smooth, DISPLAY=display, $
   ;OPTIMAL : Pour faire une "optimal extraction". Dans ce cas il faut donner READ_NOISE et SK_IMAGE (obtenue avec im1 < im2)
   ;Nombre d'iterations pour enlever les rayons cosmiques
 
-  forward_function detect_traces_AB, mpfitfun, extract_trace, optextract_1d, myprocvect, AB_moffat_indiv_envelopes
+  forward_function detect_traces_AB, mpfitfun, extract_trace, optextract_1d, myprocvect, $
+    AB_moffat_indiv_envelopes, clipnsmooth
 
   nx = (size(diff))[1]
   ny = (size(diff))[2]
