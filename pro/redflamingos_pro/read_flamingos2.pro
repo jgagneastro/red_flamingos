@@ -1,4 +1,5 @@
 Function read_flamingos2, file, useful_region, HEADER=header, REMOVEBRIGHTLINES=removebrightlines
+  forward_function mrd_hread2
   im = double(readfits(file,/silent,ext=1L))
   header = headfits(file)
   if ~keyword_set(useful_region) then return, transpose(im)

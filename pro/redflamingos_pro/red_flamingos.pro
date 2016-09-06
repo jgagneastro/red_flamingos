@@ -3,7 +3,7 @@ Pro red_flamingos, RESET=reset, FORCE=force
   forward_function gpath, string_replace, folder_check, nbrlist, read_flamingos2, sortself, flamingos2_numtofile, lamp_spectralshape, $
     weighted_median, read_abba_pattern, windows_for_reduc, extract_traces_AB, spectrum_error, tvimage, subtract_calib_sky, offset_spectra, $
     rvb_hex, best_lamp_shift, saveimage, refine_wavelength_solution, strkill, interpol2, supersmooth, fringing_fit_1d, robust_mean, simbad_data, $
-    trim, refine_wavelength_solution_relative, folder_check, writespec_ps
+    trim, refine_wavelength_solution_relative, folder_check, writespec_ps, align_trace3
   
   ; *** Parameters that need to be set by the user ***
   
