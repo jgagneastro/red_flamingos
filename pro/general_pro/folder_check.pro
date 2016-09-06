@@ -50,7 +50,7 @@ Pro folder_check, folderent, SILENT=silent, FILE=file
     testfolder += list[i]+(dash eq '/' and i eq n_elements(list)-numend ? '' : dash)
     if ~file_test(testfolder,/directory) then begin
       file_mkdir, testfolder
-      if ~keyword_set(silent) then print, ' Le dossier '+testfolder+' n''existait pas, il a ete cree.'
+      if ~keyword_set(silent) then print, ' Directory '+testfolder+' was created.'
     endif
   endfor
 End
