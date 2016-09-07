@@ -196,7 +196,7 @@ Pro red_flamingos, RESET=reset, FORCE=force
     format=strjoin(strarr(19)+'A',','), delimiter=',', /keepspaces, /preserve_null, skipline=2, /silent
   
   ;////Temporary : Avoid binary option/////
-  message, ' No binary reduction yet !', /continue
+;  message, ' No binary reduction yet !', /continue
   bad = where(strtrim(binary,2) eq '1', nbad)
   if nbad ne 0L then binary[bad] = '0'
   ;////////////////////////////////////////

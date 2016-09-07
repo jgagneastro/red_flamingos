@@ -1,1 +1,1 @@
-This is what your sample data reduced spectrum should look like in the end
+This directory contains all of the intermediary results of the sample data reduction. You can compare it with your "reduced" directory if you want to identify problems.

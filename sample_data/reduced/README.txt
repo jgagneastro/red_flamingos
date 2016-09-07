@@ -1,0 +1,1 @@
+This directory will contain your own data reduction products. Please remember to keep it empty if you upload an update of Red Flamingos on GitHub.

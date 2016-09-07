@@ -1,0 +1,1 @@
+This is what the final reduction product of your sample data should look like.
