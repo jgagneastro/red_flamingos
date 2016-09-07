@@ -1,4 +1,4 @@
-Function cshell_fringing_1D2, x, A
+Function cshell_fringing_1d2, x, A
   ; Fits a fringing solution on a 2D cshell image
   ; A[0] : Amplitude
   ; A[1] : Finesse

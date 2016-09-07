@@ -1,4 +1,4 @@
-Function cshell_fringing_1D, x, A
+Function cshell_fringing_1d, x, A
   ; Fits a fringing solution on a 2D cshell image
   ; A[0] : Amplitude
   ; A[1] : Period

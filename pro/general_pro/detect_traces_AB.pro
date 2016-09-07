@@ -1,4 +1,4 @@
-Function detect_traces_AB, diff_in, SMOOTH=smooth, DISPLAY=display, BINARY=binary, $
+Function detect_traces_ab, diff_in, SMOOTH=smooth, DISPLAY=display, BINARY=binary, $
   PEAK_VALUES=peak_values, FIT_PARAMS=fit_params, STOP=stop, SKY_IND=sky_ind, POST=post, $
   PEAK_WIDTHS=peak_widths, PEAK_INDICES=peak_indices, SUBIND=subind, UNRESOLVED=unresolved, $
   ONLY_AMPLITUDE=only_amplitude, XRANGE=xrange, FIXED_SEP=fixed_sep, TITLE=title, DIFFS=diffs

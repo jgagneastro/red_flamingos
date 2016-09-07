@@ -1,7 +1,7 @@
 Pro red_flamingos, RESET=reset, FORCE=force
   
   forward_function gpath, string_replace, folder_check, nbrlist, read_flamingos2, sortself, flamingos2_numtofile, lamp_spectralshape, $
-    weighted_median, read_abba_pattern, windows_for_reduc, extract_traces_AB, spectrum_error, tvimage, subtract_calib_sky, offset_spectra, $
+    weighted_median, read_abba_pattern, windows_for_reduc, extract_traces_ab, spectrum_error, tvimage, subtract_calib_sky, offset_spectra, $
     rvb_hex, best_lamp_shift, saveimage, refine_wavelength_solution, strkill, interpol2, supersmooth, fringing_fit_1d, robust_mean, simbad_data, $
     trim, refine_wavelength_solution_relative, folder_check, writespec_ps, align_trace3, sxpar_mul
   
@@ -667,7 +667,7 @@ Pro red_flamingos, RESET=reset, FORCE=force
 ;        if nbad ne 0L then mask[bad] = 0.
 ;        spectrait = extract_trace3(*sci_j[0L,k]/factors[0], SMOOTH=extract_smooth, SKY=*sci_j[1L,k]/factors[1],GAIN=gain,READNOISE=read_noise)
 ;        spectrait2 = extract_trace3(diff, GAIN=gain,READNOISE=read_noise)
-        spectrai = extract_traces_AB(diff, SMOOTH=extract_smooth, DISPLAY=display_diagnostics, $
+        spectrai = extract_traces_ab(diff, SMOOTH=extract_smooth, DISPLAY=display_diagnostics, $
           BINARY=(strtrim(binary[ii],2) eq '1'), SKY=skyi, FIT_PARAMS=fit_params, SUBIND=subind, $
           ENVELOPES=envelopes)
         
@@ -765,7 +765,7 @@ Pro red_flamingos, RESET=reset, FORCE=force
           ;Re-do extraction
           exptimes = [sxpar(*(hdrs[reform(couples[*,j]),*])[0],'EXPTIME'),sxpar(*(hdrs[reform(couples[*,j]),*])[1],'EXPTIME')]
           eff_noise = sqrt(total((exptimes*dark_current)^2) + 2*read_noise^2) / gain
-          spectrai = extract_traces_AB(diff, SMOOTH=extract_smooth, DISPLAY=display_diagnostics, $
+          spectrai = extract_traces_ab(diff, SMOOTH=extract_smooth, DISPLAY=display_diagnostics, $
             BINARY=(strtrim(binary[ii],2) eq '1'), SKY=skyi, FIT_PARAMS=fit_params, SUBIND=subind, $
             ENVELOPES=envelopes, OPTIMAL=optimal, GAIN=gain, READ_NOISE=eff_noise, ERROR=error, $
             EXTRACTION_PROFILES=extraction_profiles,SIGMA_THRESHOLD_OPTIMAL=7.)
@@ -826,10 +826,10 @@ Pro red_flamingos, RESET=reset, FORCE=force
         ;Extract the calibration lamps if they are specified, else use the tellurics
         fit_params[subind-1] = abs(fit_params[subind-1])
         if lamps_list_i ne !NULL then begin
-          calibi = extract_traces_AB(calib_imagei, FIT_PARAMS=fit_params, SUBIND=subind[0:1], /POST, EXTRACTION_PROFILES=abs(extraction_profiles))
+          calibi = extract_traces_ab(calib_imagei, FIT_PARAMS=fit_params, SUBIND=subind[0:1], /POST, EXTRACTION_PROFILES=abs(extraction_profiles))
         endif else begin
           ;Create a "tellurics" image
-          calibi = extract_traces_AB(sk_image, FIT_PARAMS=fit_params, SUBIND=subind[0:1], /POST, EXTRACTION_PROFILES=abs(extraction_profiles))
+          calibi = extract_traces_ab(sk_image, FIT_PARAMS=fit_params, SUBIND=subind[0:1], /POST, EXTRACTION_PROFILES=abs(extraction_profiles))
         endelse
         
         makeastop = 1

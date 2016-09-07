@@ -1,1 +1,1 @@
-This directory will contain your own data reduction products. Please remember to keep it empty if you upload an update of Red Flamingos on GitHub.
+This directory contains all of the intermediary results of the sample data reduction. You can compare it with your "reduced" directory if you want to identify problems.

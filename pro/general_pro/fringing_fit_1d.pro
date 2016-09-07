@@ -1,6 +1,6 @@
 Function fringing_fit_1d, lambda_in, fringing_in, ESTIMATED_PERIOD=estimated_period, SINUS=sinus, YFIT=yfit, ERR=err, WEIGHTS=weights_in, FACTOR=factor
   
-  forward_function interpol2, supersmooth, mpfitfun, cshell_fringing_1D, cshell_fringing_1D2, remove
+  forward_function interpol2, supersmooth, mpfitfun, cshell_fringing_1d, cshell_fringing_1d2, remove
   
   ;Interpolate the fringing on a regular wavelength grid
   if ~keyword_set(factor) then factor = 3.
@@ -27,11 +27,11 @@ Function fringing_fit_1d, lambda_in, fringing_in, ESTIMATED_PERIOD=estimated_per
     p0[2] *= 2.
     remove, 1, p0
   endif
-  par = mpfitfun('cshell_fringing_1D'+(['2',''])[keyword_set(sinus)],lambda,fringing,1.,p0,YFIT=yfit_hires,status=status,err=err,/quiet,/nan, WEIGHTS=weights)
+  par = mpfitfun('cshell_fringing_1d'+(['2',''])[keyword_set(sinus)],lambda,fringing,1.,p0,YFIT=yfit_hires,status=status,err=err,/quiet,/nan, WEIGHTS=weights)
   par2 = par
   par2[4L-keyword_set(sinus)] = 1.
   par2[5L-keyword_set(sinus)] = 0.
-  yfit_hires = cshell_fringing_1D(lambda,par2)
+  yfit_hires = cshell_fringing_1d(lambda,par2)
   yfit = interpol2(yfit_hires, lambda, lambda_in, badval=1.); / (par[4L-keyword_set(sinus)] + lambda*par[5L-keyword_set(sinus)])
   return, par
 End

@@ -730,7 +730,7 @@ endelse
 
 readspec,fullpaths[0],first,hdr,obsmode,start,stop,norders,naps,orders,$
          xunits,yunits,slith_pix,slith_arc,slitw_pix,slitw_arc,$
-         airmass,xtitle,ytitle,CANCEL=cancel, fits_extension=state.w.fits_extension
+         airmass,xtitle,ytitle,CANCEL=cancel;, fits_extension=state.w.fits_extension
 
 first = readfits(fullpaths[0],hdr,ext=state.w.fits_extension)
 
@@ -1272,7 +1272,8 @@ result = strmid(!path,first+1,last-first+7);+'_dup'
 path = cpath(result,CANCEL=cancel)
 if cancel then return
 
-readinstrfile,path+'data/'+instrfile,instr,irafname,gain,readnoise,itime,$
+;readinstrfile,path+'data/'+instrfile,instr,irafname,gain,readnoise,itime,$
+readinstrfile,instrfile,instr,irafname,gain,readnoise,itime,$
   coadds,ndrs,slowcnt,readtime,time,posangle,ha,airmass,nint,bdpxmk,keywords,$
   ncols,nrows,CANCEL=cancel
 

@@ -1,18 +1,21 @@
-Function extract_traces_AB, diff, SMOOTH=smooth, DISPLAY=display, $
+Function extract_traces_ab, diff, SMOOTH=smooth, DISPLAY=display, $
   BINARY=binary, SKY=sky, UNRESOLVED=unresolved, POST=post, SUBIND=subind, $
   FIT_PARAMS=fit_params, STOP=stop, ONLY_AMPLITUDE=only_amplitude, XRANGE=xrange, $
   PARAMS_SKY=params_sky, TELLURIC=telluric, OPTIMAL=optimal, READ_NOISE=read_noise, $
   CR_ITER=cr_iter, FIXED_SEP=fixed_sep, TITLE=title, DIFFS=diffs, $
   ENVELOPES=envelopes, GAIN=gain, ERROR=error, $
-  SIGMA_THRESHOLD_OPTIMAL=sigma_threshold_optimal, EXTRACTION_PROFILES=extraction_profiles
+  SIGMA_THRESHOLD_OPTIMAL=sigma_threshold_optimal, EXTRACTION_PROFILES=extraction_profiles, $
+  JUSTCOMPILE=justcompile
   ;POST : On utilise SUBIND et FIT_PARAMS au lieu de detecter les traces
   ;TELLURIC : Cette option soustrait les telluriques en utilisant la région du ciel (pratique pour de gros CCDs par exemple, où la soustraction tellurique précédente n'est pas nécessairement efficace autour de la trace de science)
   ;OPTIMAL : Pour faire une "optimal extraction". Dans ce cas il faut donner READ_NOISE et SK_IMAGE (obtenue avec im1 < im2)
   ;Nombre d'iterations pour enlever les rayons cosmiques
 
-  forward_function detect_traces_AB, mpfitfun, extract_trace, optextract_1d, myprocvect, $
+  forward_function detect_traces_ab, mpfitfun, extract_trace, optextract_1d, myprocvect, $
     AB_moffat_indiv_envelopes, clipnsmooth
 
+  if keyword_set(justcompile) then return, 0
+  
   nx = (size(diff))[1]
   ny = (size(diff))[2]
   xind = findgen(ny)
@@ -28,7 +31,7 @@ Function extract_traces_AB, diff, SMOOTH=smooth, DISPLAY=display, $
   endif else begin
     ;Here I replaced diff with "diff - median thing" (J. Gagne April 28, 2015)
     diffsub = diff-median(diff,dim=2)#make_array((size(diff))[2],value=1d0,/double)
-    pos_traces = detect_traces_AB(diffsub, SMOOTH=smooth, DISPLAY=display, $
+    pos_traces = detect_traces_ab(diffsub, SMOOTH=smooth, DISPLAY=display, $
       BINARY=binary, PEAK_VALUES=peak_values, SKY_IND=sky_ind, $
       PEAK_WIDTHS=peak_widths, PEAK_INDICES=peak_indices, $
       FIT_PARAMS=fit_params, SUBIND=subind, STOP=stop, UNRESOLVED=unresolved,$
