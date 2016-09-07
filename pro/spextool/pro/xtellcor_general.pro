@@ -1,10 +1,3 @@
-;Flamingos-2 :
-;Fente 4pix :
-;JH, ordre 1 : 0.0026668 um
-;JH, ordre 2 : 0.0026668 um
-;HK, ordre 3 : 0.0031304 um
-;HK, ordre 4 : 0.0031304 um
-; Normally, I use the 4-pix slit.
 ;+
 ; NAME:
 ;     xtellcor_general
@@ -75,6 +68,8 @@ case uvalue of
     end
 
     'B Magnitude Field': setfocus, state.w.vmag_fld
+    
+    'V Magnitude Field': setfocus, state.w.vmag_fld
 
 ;    'Construct Kernel': xtellcor_general_conkernel,state
     
@@ -179,7 +174,7 @@ case uvalue of
 
     'Standard Spectra Field': setfocus,state.w.bmag_fld
 
-    'V Magnitude Field': setfocus, state.w.objspectra_fld
+    'SpT Field': setfocus, state.w.objspectra_fld
 
     'Wavelength Units': begin
 
@@ -336,7 +331,7 @@ telluric, (*state.d.stdspec)[*,0],(*state.d.stdspec)[*,1],$
   (*state.d.stdspec)[*,2],state.r.vmag,(state.r.bmag-state.r.vmag),$
   (*state.d.kernels).(0),(*state.r.scales)[*,0],*state.d.wvega,$
   *state.d.fvega,*state.d.cfvega,*state.d.cf2vega,state.r.vshift,tellcor,$
-  tellcor_error,scvega
+  tellcor_error,scvega, SPT=state.r.spt
 
 ;  Perform interpolations if necessary
 
@@ -413,7 +408,7 @@ xscalelines,*state.d.stdspec,[1],state.r.vmag,$
             scales,cutreg,XTITLE='!5!7k!5 (!7l!5m)', $
             YTITLE='!5Arbitrary Flux',$
             PARENT=state.w.xtellcor_general_base,$
-            CANCEL=cancel
+            CANCEL=cancel, SPT=state.r.spt
 
 if not cancel then begin
     
@@ -473,6 +468,8 @@ if cancel then return
 bmag = cfld(state.w.bmag_fld,4,/EMPTY,CANCEL=cancel)
 if cancel then return
 vmag = cfld(state.w.vmag_fld,4,/EMPTY,CANCEL=cancel)
+if cancel then return
+spt = cfld(state.w.spt_fld,7,/EMPTY,CANCEL=cancel)
 if cancel then return
 
 obj = cfld(state.w.objspectra_fld,7,/EMPTY,CANCEL=cancel)
@@ -540,11 +537,27 @@ state.d.fwhm       = fwhm*scale
 
 state.r.bmag = bmag
 state.r.vmag = vmag
+;state.r.spt = spt this destroys xscaleline
 state.r.vshift = 0.0
 
 ;  Load Vega model
 
 restore, state.r.packagepath+'/data/lvega5.sav'
+
+;Adapt flux slope with spectral type
+if spt ne 'A0' then begin
+  print, ' Adapting Vega for spectral type '+spt+' !'
+  restore, state.r.packagepath+'/data/A_flux_deviations.sav'
+  gg = where(spt_table eq spt, ngg)
+  if ngg ne 1L then message, ' This spectral type could not be found !'
+  fluxslope = interpol2(fluxdev_table[*,0,gg],lambda,wvin)
+  bad = where(~finite(fluxslope),nbad)
+  if nbad ne 0 then fluxslope[bad] = 1.
+  fvin *= interpol2(fluxdev_table[*,0,gg],lambda,wvin)
+  fcvin *= interpol2(fluxdev_table[*,0,gg],lambda,wvin)
+  fc2vin *= interpol2(fluxdev_table[*,0,gg],lambda,wvin)
+endif
+
 state.r.vdisp = 1.49774e-5
 
 
@@ -773,14 +786,27 @@ end
 ;
 ;******************************************************************************
 ;
-pro xtellcor_general, JH=jh, HK=hk
+pro xtellcor_general, FWHM=fwhm, PATH_INPUT=path_input, SCIENCE_INPUT=science_input, TELL_INPUT=tell_input, B_INPUT=b_input, V_INPUT=v_input, $
+  SAVE_INPUT=save_input, SPT_INPUT=spt_input
+
+;PREVIOUS FWHM VALUES
+  ;VALUE = keyword_set(grism) ? (grism eq 'JH' ? '0.00266680' : '0.00313040') : '', $
+  ;VALUE='0.00086774',$
 
 mkct
 
-if keyword_set(JH) then grism = 'JH'
-if keyword_set(HK) then grism = 'HK'
-
 ;  Startup
+
+if ~keyword_set(b_input) then $
+  b_input = 0.
+if ~keyword_set(v_input) then $
+  v_input = 0.
+  if ~keyword_set(spt_input) then $
+    spt_input = 'A0'
+if ~keyword_set(is_ip) then is_ip = 0
+defsysv,'!spexpath', exists=pexists
+if ~keyword_set(path_input) and pexists then $
+  path_input = !spexpath+'proc/'
 
 getosinfo,dirsep,strsep
 
@@ -814,6 +840,7 @@ w = {bmag_fld:[0,0],$
      stdspectra_fld:[0L,0L],$
      stdorder_dl:0L,$
      vmag_fld:[0,0],$
+     spt_fld:[0,0],$
      vrot_fld:[0L,0L],$
      xtellcor_general_base:0L}
 
@@ -837,7 +864,8 @@ r = {bmag:0.,$
      wline:0.,$
      wunits:0,$
      xunits:'um',$
-     yunits:''}
+     yunits:'',$
+     spt:'A0'}
 
 d = {airmass:'',$
      awave:awave,$
@@ -900,7 +928,7 @@ state.w.xtellcor_general_base = widget_base(TITLE='Xtellcor_General', $
                                      FIELDFONT=textfont,$
                                      TITLE=':',$
                                      UVALUE='Path Field',$
-                                     VALUE=!spexpath,$
+                                     VALUE=path_input,$
                                      XSIZE=25,$
                                      /CR_ONLY,$
                                      TEXTID=textid)
@@ -921,7 +949,7 @@ state.w.xtellcor_general_base = widget_base(TITLE='Xtellcor_General', $
                                        TITLE=':',$
                                        UVALUE='Standard Spectra Field',$
                                        XSIZE=18,$
-;                                       VALUE='O4_std.txt',$
+                                       VALUE=tell_input,$
                                        /CR_ONLY,$
                                        TEXTID=textid)
                state.w.stdspectra_fld = [std_fld,textid]
@@ -933,10 +961,10 @@ state.w.xtellcor_general_base = widget_base(TITLE='Xtellcor_General', $
                mag = coyote_field2(row,$
                                    LABELFONT=buttonfont,$
                                    fieldfont=textfont,$
-                                   TITLE='Std Mag (B,V):',$
+                                   TITLE='Std (B,V,SPT):',$
                                    UVALUE='B Magnitude Field',$
-                                   XSIZE=6,$
-;                                   VALUE='7',$
+                                   XSIZE=5,$
+                                   VALUE=strtrim(b_input,2),$
                                    /CR_ONLY,$
                                    TEXTID=textid)
                state.w.bmag_fld = [mag,textid]
@@ -945,12 +973,23 @@ state.w.xtellcor_general_base = widget_base(TITLE='Xtellcor_General', $
                                    LABELFONT=buttonfont,$
                                    fieldfont=textfont,$
                                    UVALUE='V Magnitude Field',$
-                                   XSIZE=6,$
-;                                   VALUE='7',$
+                                   XSIZE=5,$
+                                   VALUE=strtrim(v_input,2),$
                                    TITLE='',$
                                    /CR_ONLY,$
                                    TEXTID=textid)
                state.w.vmag_fld = [mag,textid]
+               
+               mag = coyote_field2(row,$
+                                   LABELFONT=buttonfont,$
+                                   fieldfont=textfont,$
+                                   UVALUE='SpT Field',$
+                                   XSIZE=5,$
+                                   VALUE=strtrim(spt_input,2),$
+                                   TITLE='',$
+                                   /CR_ONLY,$
+                                   TEXTID=textid)
+               state.w.spt_fld = [mag,textid]
                
             row = widget_base(box1_base,$
                               /row,$
@@ -967,7 +1006,7 @@ state.w.xtellcor_general_base = widget_base(TITLE='Xtellcor_General', $
                                        fieldfont=textfont,$
                                        TITLE=':',$
                                        UVALUE='Object Spectra Field',$
-;                                       VALUE='O4_obj.txt',$
+                                       VALUE=science_input,$
                                        XSIZE=18,$
                                        /CR_ONLY,$
                                        TEXTID=textid)
@@ -989,8 +1028,7 @@ state.w.xtellcor_general_base = widget_base(TITLE='Xtellcor_General', $
                                        fieldfont=textfont,$
                                        UVALUE='FWHM Field',$
                                        XSIZE=15,$
-                                       VALUE = keyword_set(grism) ? (grism eq 'JH' ? '0.00266680' : '0.00313040') : '', $
-;                                 VALUE='0.00086774',$
+                                       VALUE = strtrim(fwhm,2),$
                                        TITLE='FWHM = ',$
                                        TEXTID=textid)
                   state.w.fwhm_fld = [fwhm,textid]
@@ -1112,6 +1150,7 @@ state.w.xtellcor_general_base = widget_base(TITLE='Xtellcor_General', $
                                   FIELDFONT=textfont,$
                                   TITLE='Object File:',$
                                   UVALUE='Object File Oname',$
+                                  VALUE=save_input,$
                                   xsize=18,$
                                   textID=textid)
             state.w.objoname_fld = [oname,textid]

@@ -44,7 +44,7 @@ Function simbad_data, name, US=us, DEBUG=debug, VERBOSE=verbose, SILENT=silent, 
 ;-
   
   ;Subroutines
-  forward_function repstr, add_tags, webget, valid_num, remove, ten
+  forward_function repstr, add_tags, webget, valid_num, remove, ten, eof_robust
   
   ; **** ADD VARIABLES HERE ********************************************************************************************************
   

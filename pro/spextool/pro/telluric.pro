@@ -54,7 +54,7 @@
 ;     None
 ;
 ; PROCEDURE:
-;     Complioated but based entirely on W. Vacca's telluric.  
+;     Complicated but based entirely on W. Vacca's telluric.  
 ;
 ; EXAMPLE:
 ;
@@ -65,7 +65,7 @@
 
 pro telluric,std_wave,std_flux,std_error,std_mag,std_bminv,kernel,scales,$
              wvega,fvega,cfvega,cf2vega,vshift,tellcor,tellcor_error,scvega,$
-             CANCEL=cancel
+             CANCEL=cancel, SPT=spt
 
 cancel = 0
 
@@ -143,8 +143,22 @@ linterp,swvega[idx],fvconv,std_wave,rfvconv
 
 vegamag  = 0.03
 vegabmv  = 0.00
+
+spt = 'A0'
+;if ~keyword_set(spt) then stop;spt = 'A0'
+if spt ne 'A0' then begin
+  cols = [0.,0.043,0.074,0.09,0.140,0.160,0.170,0.210,0.250,0.255];From Pecaut & Mamajek 2013
+  mags = [1.11,1.34,1.48,1.55,1.76,1.84,1.89,2.07,2.29,2.30] ;From E. Mamajek's additional material
+  vegamag = interpol(mags,dindgen(n_elements(cols)),float(f_strkill(spt,'A')))
+  vegabmv = interpol(cols,dindgen(n_elements(cols)),float(f_strkill(spt,'A')))
+endif
+
+
+
 magscale = 10.0^(-0.4*(std_mag-vegamag))
 ebmv     = (std_bminv - vegabmv) > 0.0 ; to prevent reddening the spectrum
+if spt eq 'A0' then $
+  ebmv >= 0.0
 avred    = 3.10*ebmv
 
 ;  Redden the convolved Vega model

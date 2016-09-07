@@ -730,9 +730,9 @@ endelse
 
 readspec,fullpaths[0],first,hdr,obsmode,start,stop,norders,naps,orders,$
          xunits,yunits,slith_pix,slith_arc,slitw_pix,slitw_arc,$
-         airmass,xtitle,ytitle,CANCEL=cancel
+         airmass,xtitle,ytitle,CANCEL=cancel, fits_extension=state.w.fits_extension
 
-first = readfits(fullpaths[0],hdr)
+first = readfits(fullpaths[0],hdr,ext=state.w.fits_extension)
 
 state.r.npix     = n_elements(first[*,0,0])
 state.r.norders  = norders
@@ -911,13 +911,17 @@ if state.w.modspeccontinue gt 4 then begin
 
 endif
 
-spc     = (*state.d.ospec)[state.r.ap]
+;!@!@!@! J.GAGNE.MODIFICATION TO GET SCALED SPECTRA DISPLAYED IN THE MASKING PROCESS 
+;spc     = (*state.d.ospec)[state.r.ap]
+spc     = (*state.d.wspec)[state.r.ap]
+
 
 zorder = total(where(*state.r.orders eq (*state.r.orders)[index]))
 
 mask = xmkpixmask(reform(spc.(zorder)[*,0,0]),reform(spc.(zorder)[*,1,*]), $
                   ISTACKMASK=reform((*state.r.spcmask)[*,index,state.r.ap]),$
-                  GROUP_LEADER=state.w.xcombspec_base,CANCEL=cancel)
+                  GROUP_LEADER=state.w.xcombspec_base,CANCEL=cancel,$
+                  INITMASK=(*state.r.pixmask)[state.r.ap].(zorder))
 
 if cancel then return
 
@@ -1034,7 +1038,7 @@ if state.p.plottype eq 0 then begin
                 if cnt ne 0 then flux[z] = !values.f_nan
 
               oplot,spc[state.r.ap].(j)[*,0,k],flux,$
-                    COLOR=state.r.colors[k],LINESTYLE=state.r.lines[k],$
+                    COLOR=state.r.colors[(k mod 96)],LINESTYLE=state.r.lines[(k mod 96)],$
                     PSYM=10
 
           endif
@@ -1241,12 +1245,15 @@ end
 ;
 ;******************************************************************************
 ;
-pro xcombspec,instrfile,BASIC=basic,PATH_INPUT=path_input,PREFIX_INPUT=prefix_input,FILES_INPUT=files_input,SAVE_INPUT=save_input, QUITONWRITE=quitonwrite
+pro xcombspec,instrfile,BASIC=basic,PATH_INPUT=path_input,PREFIX_INPUT=prefix_input,FILES_INPUT=files_input,SAVE_INPUT=save_input, QUITONWRITE=quitonwrite, FULL_FILE_NAMES=full_file_names, FITS_EXTENSION=fits_extension
 
 mkct
 
 if ~keyword_set(prefix_input) then $
   prefix_input = 'spectra'
+
+if ~keyword_set(fits_extension) then $
+  fits_extension = 0L
 
 defsysv,'!spexpath', exists=pexists
 if ~keyword_set(path_input) and pexists then $
@@ -1260,10 +1267,10 @@ if n_elements(instrfile) eq 0 then instrfile = 'SpeX.dat'
 
 last   = strpos(strlowcase(!path),'spextool')
 first  = strpos(!path,':',last,/REVERSE_SEARCH)
-result = strmid(!path,first+1,last-first+7)
+result = strmid(!path,first+1,last-first+7);+'_dup'
 
 path = cpath(result,CANCEL=cancel)
-if cancel then stop;return
+if cancel then return
 
 readinstrfile,path+'data/'+instrfile,instr,irafname,gain,readnoise,itime,$
   coadds,ndrs,slowcnt,readtime,time,posangle,ha,airmass,nint,bdpxmk,keywords,$
@@ -1303,7 +1310,8 @@ w = {aperture_dl:0L,$
      scaleorder_dl:0L,$
      scalerange_fld:[0L,0L],$
      specfiles_fld:[0L,0L],$
-     xcombspec_base:0L}
+     xcombspec_base:0L,$
+     fits_extension:fits_extension}
 
 r = {absscalerange:[!values.f_nan,!values.f_nan],$
      airmass:airmass,$
@@ -1319,7 +1327,7 @@ r = {absscalerange:[!values.f_nan,!values.f_nan],$
      combspec:ptr_new(2),$
      corspec:ptr_new(2),$
      files:ptr_new(fltarr(2)),$
-     filereadmode:'Index',$
+     filereadmode:(keyword_set(full_file_names) ? 'Filename' : 'Index'),$
      fnaps:0,$
      ha:ha,$
      ifileformat:'FITS',$
@@ -1459,8 +1467,9 @@ state.w.xcombspec_base = widget_base(TITLE='xcombspec', $
                                  UVALUE='Readmode',$
                                  FONT=buttonfont,$
                                  /EXCLUSIVE,$
-                                 SET_VALUE=1)
-            
+                                 ;SET_VALUE=2)
+                                 SET_VALUE=fix(~keyword_set(full_file_names)))
+                  
                   field = coyote_field2(state.w.manual_base,$
                                         LABELFONT=buttonfont,$
                                         FIELDFONT=textfont,$

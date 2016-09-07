@@ -3,7 +3,7 @@ Pro red_flamingos, RESET=reset, FORCE=force
   forward_function gpath, string_replace, folder_check, nbrlist, read_flamingos2, sortself, flamingos2_numtofile, lamp_spectralshape, $
     weighted_median, read_abba_pattern, windows_for_reduc, extract_traces_AB, spectrum_error, tvimage, subtract_calib_sky, offset_spectra, $
     rvb_hex, best_lamp_shift, saveimage, refine_wavelength_solution, strkill, interpol2, supersmooth, fringing_fit_1d, robust_mean, simbad_data, $
-    trim, refine_wavelength_solution_relative, folder_check, writespec_ps, align_trace3
+    trim, refine_wavelength_solution_relative, folder_check, writespec_ps, align_trace3, sxpar_mul
   
   ; *** Parameters that need to be set by the user ***
   
@@ -1326,7 +1326,7 @@ Pro red_flamingos, RESET=reset, FORCE=force
         if ngab eq 1L then begin
           file_copy, outdir+flamingos2_numtofile(date,fits_list_i[gab[0L]],/nogz), outdir+save_file_ab[0L]+'.fits', /overwrite
         endif else begin
-          xcombspec,'FLAMINGOS2.dat',PATH_INPUT=outdir,PREFIX_INPUT=strmid(outname,0,10),FILES_INPUT=strjoin(strtrim(fits_list_i[gab],2),','),$
+          xcombspec,resources_dir+'FLAMINGOS2.dat',PATH_INPUT=outdir,PREFIX_INPUT=strmid(outname,0,10),FILES_INPUT=strjoin(strtrim(fits_list_i[gab],2),','),$
             SAVE_INPUT=save_file_ab
           print, ' Enter .continue when done !'
           stop
@@ -1343,7 +1343,7 @@ Pro red_flamingos, RESET=reset, FORCE=force
         if nga eq 1L then begin
           file_copy, outdir+flamingos2_numtofile(date,fits_list_i[ga[0L]],/nogz), outdir+save_file_a[0L]+'.fits', /overwrite
         endif else begin
-          xcombspec,'FLAMINGOS2.dat',PATH_INPUT=outdir,PREFIX_INPUT=strmid(outname,0,10),FILES_INPUT=strjoin(strtrim(fits_list_i[ga],2),','),$
+          xcombspec,resources_dir+'FLAMINGOS2.dat',PATH_INPUT=outdir,PREFIX_INPUT=strmid(outname,0,10),FILES_INPUT=strjoin(strtrim(fits_list_i[ga],2),','),$
             SAVE_INPUT=save_file_a
           print, ' Enter .continue when done !'
           stop
@@ -1358,7 +1358,7 @@ Pro red_flamingos, RESET=reset, FORCE=force
         if ngb eq 1L then begin
           file_copy, outdir+flamingos2_numtofile(date,fits_list_i[gb[0L]],/nogz), outdir+save_file_b[0L]+'.fits', /overwrite
         endif else begin
-          xcombspec,'FLAMINGOS2.dat',PATH_INPUT=outdir,PREFIX_INPUT=strmid(outname,0,10),FILES_INPUT=strjoin(strtrim(fits_list_i[gb],2),','),$
+          xcombspec,resources_dir+'FLAMINGOS2.dat',PATH_INPUT=outdir,PREFIX_INPUT=strmid(outname,0,10),FILES_INPUT=strjoin(strtrim(fits_list_i[gb],2),','),$
             SAVE_INPUT=save_file_b
           print, ' Enter .continue when done !'
           stop
@@ -1416,7 +1416,7 @@ Pro red_flamingos, RESET=reset, FORCE=force
               bmag = hipparcos[good[0]].BTMAG
               vmag = hipparcos[good[0]].VTMAG
             endif else begin
-              sim = simbad_data(name[gtell[0L]],/US)
+              sim = simbad_data(name[gtell[0L]])
               if ~isa(sim,'struct') then $
                 message, ' Could not download SIMBAD data to get B and V magnitudes for the telluric !'
               if ~finite(sim.bmag*sim.vmag) then $

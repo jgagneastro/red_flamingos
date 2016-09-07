@@ -86,7 +86,7 @@
 pro xscalelines_initcommon,std,stdorders,stdmag,stdbmv,wvega,fvega,fcvega,$
                            fc2vega,kernels,vshift,obj,objorders,objnaps,awave,$
                            atrans,hlines,hnames,initscale,scales,$
-                           XPUTS=xputs,VROT=vrot,XTITLE=xtitle,YTITLE=ytitle
+                           XPUTS=xputs,VROT=vrot,XTITLE=xtitle,YTITLE=ytitle, SPT=spt
 
 cleanplot,/SILENT
 
@@ -138,7 +138,7 @@ w = {keyboard:0L,$
      xmax_fld:[0L,0L],$
      ymin_fld:[0L,0L],$
      ymax_fld:[0L,0L]}
-
+spt='A0'
 r = {cancel:0,$
      cpoints:ptr_new(fltarr(2)),$
      cursormode:'None',$
@@ -151,6 +151,7 @@ r = {cancel:0,$
      stdidx:0,$
      stdbmv:stdbmv,$
      stdmag:stdmag,$
+     stdspt:spt,$
      tension:10.,$
      vshift:vshift}
 
@@ -171,7 +172,8 @@ d = {atrans:[[awave],[atrans]],$
      std:std,$
      stdorders:stdorders,$
      tellspec:ptr_new(fltarr(2)),$
-     xputs:ixputs}
+     xputs:ixputs,$
+     modhlines:0}
 
 p = {absxrange2:[0.,0.],$
      absyrange2:[0.,0.],$     
@@ -349,9 +351,18 @@ pro xscalelines_makescale
 
 common xscalelines_state
 
-scalespec = spline((*state.r.cpoints).(state.r.stdidx)[0,*],$
+;!@!@!@! J. Gagne avoid crashes when < 3 handes in a spectral window
+if n_elements((*state.r.cpoints).(state.r.stdidx)[0,*]) lt 3L then begin
+  scalespec = interpol((*state.r.cpoints).(state.r.stdidx)[1,*],(*state.r.cpoints).(state.r.stdidx)[0,*],state.d.std[*,0,state.r.stdidx])
+endif else begin
+  scalespec = spline((*state.r.cpoints).(state.r.stdidx)[0,*],$
                    (*state.r.cpoints).(state.r.stdidx)[1,*],$
                    state.d.std[*,0,state.r.stdidx],state.r.tension)
+endelse
+
+;scalespec = spline((*state.r.cpoints).(state.r.stdidx)[0,*],$
+;                   (*state.r.cpoints).(state.r.stdidx)[1,*],$
+;                   state.d.std[*,0,state.r.stdidx],state.r.tension)
 
 *state.r.scalespec = scalespec
 
@@ -364,17 +375,29 @@ pro xscalelines_makespec
 common xscalelines_state
 
 case state.r.spectype of
-
-    'Telluric': begin
-
+    
+    'Raw Object': begin
+      wave = state.d.obj[*,0,state.d.objnaps*state.r.stdidx]
+      spec = state.d.obj[*,1,state.d.objnaps*state.r.stdidx]
+      *state.p.spec = [[wave],[spec]]
+      
+    end
+    
+    'Standard': begin
+      wave = (state.d.std)[*,0]
+      spec = (state.d.std)[*,1]
+      *state.p.spec = [[wave],[spec]]
+      
+    end
+    
+    'Telluric': begin ;!@!@!@!
         wave = state.d.std[*,0,state.r.stdidx]
         spec = *state.d.tellspec
         *state.p.spec = [[wave],[1./spec]]
 
     end
 
-    'Object': begin
-
+    'Object': begin ;!@!@!@!
         interpspec,state.d.std[*,0,state.r.stdidx],*state.d.tellspec,$
           state.d.obj[*,0,state.d.objnaps*state.r.stdidx],tellspec
 
@@ -398,11 +421,10 @@ telluric, state.d.std[*,0,state.r.stdidx],$
   state.d.std[*,1,state.r.stdidx],state.d.std[*,2,state.r.stdidx],$
   state.r.stdmag,state.r.stdbmv,state.d.kernels.(state.r.stdidx),$
   *state.r.scalespec,state.d.owvega,state.d.ofvega,state.d.ofcvega,$
-  state.d.ofc2vega,state.r.vshift,tellcor,CANCEL=cancel
+  state.d.ofc2vega,state.r.vshift,tellcor,CANCEL=cancel;, SPT=state.r.stdspt
 if cancel then return
 
 ;  Perform interpolations if necessary
-
 ndat = n_elements(*state.r.cutreg.(state.r.stdidx))
 
 if ndat ne 1 then begin
@@ -551,8 +573,12 @@ endelse
 case state.r.spectype of
 
     'Telluric': ytitle = state.p.ytitle[0]
+    
+    'Standard': ytitle = state.p.ytitle[0]
 
     'Object': ytitle = state.p.ytitle[1]
+    
+    'Raw Object': ytitle = state.p.ytitle[1]
 
 endcase
 
@@ -804,6 +830,13 @@ case uvalue of
                 state.r.ereg = !values.f_nan
 
             end
+            
+            'h': begin
+
+              state.r.cursormode = 'Modify H Line'
+              state.r.ereg = !values.f_nan
+
+            end
 
             'f': begin
 
@@ -877,7 +910,22 @@ case uvalue of
         xscalelines_plotupdate2                
 
     end
-
+    
+;    'Rectify Wavelength Scale': begin
+;      
+;      if state.d.modhlines eq 0 then begin 
+;        print, ' No rectification needed (No H lines were displaced) '
+;      endif else begin
+;        
+;        stop
+;        xscalelines_makescale
+;        xscalelines_maketelluric
+;        xscalelines_makespec
+;        xscalelines_plotupdate1
+;        xscalelines_plotupdate2
+;      endelse
+;    end
+    
     'Spectrum Type': begin
 
         state.r.spectype = event.value
@@ -1170,6 +1218,7 @@ if event.type eq 1 then begin
             endif else begin
 
                 state.r.ereg[1] = xy[0]
+                
                 xscalelines_estimatescale
                 xscalelines_makescale
                 xscalelines_maketelluric
@@ -1181,6 +1230,32 @@ if event.type eq 1 then begin
             endelse
 
         end
+        
+;        'Modify H Line' : begin
+;          
+;          ;Find the closest H line
+;          void = min(abs(state.d.hlines - xy[0]),wmin)
+;          
+;          ;Set it to the cursor value
+;          state.d.hlines[wmin] = xy[0L]
+;          
+;          tmp = (*state.r.cpoints).(state.r.stdidx)
+;          void = min(abs(reform(tmp[0,*]) - xy[0]),wmin)
+;          tmp[0,wmin] = xy[0L]
+;          tmp[1,wmin] = 1.
+;          (*state.r.cpoints).(state.r.stdidx) = tmp
+;          
+;          xscalelines_makescale
+;          xscalelines_maketelluric
+;          xscalelines_makespec
+;          xscalelines_plotupdate1
+;          xscalelines_plotupdate2
+;          state.r.cursormode = 'None'
+;          
+;          ;Remember that H lines were modified
+;          state.d.modhlines = 1
+;          
+;        end
 
         'Fix': begin
 
@@ -1410,7 +1485,7 @@ end
 pro xscalelines,std,stdorders,stdmag,stdbmv,wvega,fvega,fcvega,fc2vega,$
                 kernels,vshift,obj,objorders,objnaps,awave,atrans,hlines,$
                 hnames,initscale,scales,cutreg,PARENT=parent,XPUTS=xputs,$
-                XTITLE=xtitle,YTITLE=ytitle,CANCEL=cancel
+                XTITLE=xtitle,YTITLE=ytitle,CANCEL=cancel, SPT=spt
 
 common xscalelines_state
 
@@ -1420,7 +1495,7 @@ if not xregistered('xscalelines') then begin
         
     xscalelines_initcommon,std,stdorders,stdmag,stdbmv,wvega,fvega,fcvega,$
       fc2vega,kernels,vshift,obj,objorders,objnaps,awave,atrans,hlines,$
-      hnames,initscale,scales,XPUTS=xputs,XTITLE=xtitle,YTITLE=ytitle
+      hnames,initscale,scales,XPUTS=xputs,XTITLE=xtitle,YTITLE=ytitle, SPT=spt
 
     if n_elements(PARENT) ne 0 then widget_control, parent, SENSITIVE=0
 
@@ -1471,9 +1546,12 @@ if not xregistered('xscalelines') then begin
        button = widget_button(row,$
                               VALUE='Reset Control Points',$
                               FONT=buttonfont,$
-                              UVALUE='Reset Control Points')    
+                              UVALUE='Reset Control Points')
 
-
+       button2 = widget_button(row,$
+                              VALUE='Rectify Wavelength Scale',$
+                              FONT=buttonfont,$
+                              UVALUE='Rectify Wavelength Scale')
 
     state.w.plotwin1 = widget_draw(state.w.xscalelines_base,$
                                    XSIZE=state.p.plot1size[0],$
@@ -1493,7 +1571,7 @@ if not xregistered('xscalelines') then begin
 
        bg = cw_bgroup(row,$
                       FONT=buttonfont,$
-                      ['Telluric','Object'],$
+                      ['Telluric','Object','Standard','Raw Object'],$
                       /ROW,$
                       /RETURN_NAME,$
                       /NO_RELEASE,$
@@ -1639,10 +1717,14 @@ if not xregistered('xscalelines') then begin
 
     scales = fltarr(n_elements(state.d.std[*,0,0]),state.d.norders)
     for i = 0, state.d.norders-1 do begin
-
+      
+      if n_elements((*state.r.cpoints).(i)[0,*]) lt 3L then begin
+        scales[*,i] = interpol((*state.r.cpoints).(i)[1,*],(*state.r.cpoints).(i)[0,*],state.d.std[*,0,i])
+      endif else begin
         scales[*,i] = spline((*state.r.cpoints).(i)[0,*],$
                              (*state.r.cpoints).(i)[1,*],$
                              state.d.std[*,0,i],state.r.tension)
+      endelse
         
     endfor
     cancel = state.r.cancel
